@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Plant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>My Plant</h1>
+
+<div class="plant-container">
+  <img class="plant-pic" id="plant-image" src="happy.png" alt="My Plant">
+  <div id="messageBox" class="textbox">Heyyyy I'm your new plant! Nice to meet you!!</div>
+</div>
+
+<div class="status-box">
+    <div class="status-line" id="thirst">Thirst Level: 35%</div>
+    <div class="status-line">
+    Last Moisture Value: <span id="moistureValue">420</span> 
+        (updated <span id="lastUpdated">)</span>
+    </div>
+    <div class="status-line">
+    Last Watered: <span id="lastWatered">never</span>
+    </div>
+
+</div>
+
+<div class="button-row">
+  <button id="moisture-btn">Get Current Moisture</button>
+  <div class="water-dropdown-container">
+    <button id="water-btn">Water Me ⬇</button>
+    <div class="dropdown" id="water-options">
+      <button class="dropdown-option">Short Water</button>
+      <button class="dropdown-option">Medium Water</button>
+      <button class="dropdown-option">Long Water</button>
+    </div>
+  </div>
+</div>
+
+<div id="rain-container"></div>
+
+<script type="module" src="index.js"></script>
+
+
+</body>
+</html>
