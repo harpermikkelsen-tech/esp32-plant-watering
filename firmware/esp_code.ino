@@ -70,8 +70,6 @@ Serial.println("Firebase authenticated");
 
 
 
-
-
 }
 
 // unix helper function

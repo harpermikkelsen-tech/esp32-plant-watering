@@ -36,8 +36,9 @@ An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime 
      }
      ```
 3. Enable Authentication -> Email/Password.
-4. Add your analytics config to `web_app/firebase.js` (already included for your demo project).
+4. Add your analytics config to `web_app/firebase.js`
 5. Add an authorized user in Firebase Auth.
+6. Add another authorized user that will be used for the ESP.
 
 ## Setup: Firmware
 
@@ -45,8 +46,8 @@ An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime 
 2. Fill in:
    - `WIFI_SSID`, `WIFI_PASSWORD`
    - `API_KEY` (if needed for REST/auth operations)
-   - `DATABASE_URL` or `FIREBASE_HOST`
-   - `FIREBASE_AUTH` (database secret token for ESP read/write)
+   - `DATABASE_URL`
+   - `WIFI_SSID`, `WIFI_PASSWORD`
 3. Compile and flash `firmware/esp_code.ino` to ESP32/ESP8266.
 
 ## Usage
@@ -56,35 +57,20 @@ An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime 
 3. Control watering and request moisture updates.
 4. Sign out to switch into demo mode.
 
-## Block diagram
+## Block Diagram
 
-This is a high-level architecture for the system:
-
-- ESP microcontroller
-  - Reads soil moisture sensor
-  - Controls water pump relay
-  - Sends/receives updates to/from Firebase RTDB
-- Firebase Realtime Database
-  - Stores `moisture_value`, `water/watering`, `water/water_length`, `time/last_*`
-  - Enforces rules for read/write permissions
-- Firebase Authentication
-  - Web user login (Email/Password)
-  - Demo mode for unauthenticated users (read-only UI with controls disabled)
-- Browser dashboard (`web_app/`)
-  - Shows current plant status
-  - Requests moisture reading, triggers watering if authenticated
+![ESP32 Plant Watering System](assets/block_diagram.png)
 
 ## What I learned
 
-- Firebase auth and RTDB integration with vanilla JS: `onAuthStateChanged`, `onValue`, `set`/`get` operations.
-- How to implement demo mode gracefully for non-authenticated users while still keeping the app functional for authenticated users.
-- ESP-Firebase connectivity with `Firebase_ESP_Client` and using legacy database secret auth for embedded devices.
-- Importance of securing secrets (`secrets.h` in `.gitignore`) and defining strict database rules.
+- Firebase auth and RTDB integration with vanilla JS
+- ESP-Firebase connectivity and auth with `esp_code` 
+- Importance of securing secrets (`secrets.h` in `.gitignore`) and defining  database rules.
 - Basic UI state management and feedback flow with plain JavaScript.
 
 ## Demo video
 
 Watch the full demo on YouTube:
 
-- [Plant Watering Demo Video](https://youtu.be/your-demo-url-here)
+- [Plant Watering Demo Video](https://youtu.be/cg9LvNNaJa8)
 
