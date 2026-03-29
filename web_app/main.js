@@ -85,6 +85,10 @@ function initApp() {
     });
 
     onMoistureChange(value => {
+        if (!isAuthenticated) {
+            // Keep demo message stable and do not update UI from live RTDB data.
+            return;
+        }
         if (!value) return;
         updateMoistureUI(value);
     });

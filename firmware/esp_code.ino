@@ -29,7 +29,6 @@ int waterLength = 0;
 
 int moistureValue;
 
-bool signUpOK = false;
 bool watering = false;
 
 void setup() {
@@ -48,14 +47,29 @@ void setup() {
   Serial.print("Connected with IP: ");
   Serial.println(WiFi.localIP());
 
-  // Using Database Secret auth (legacy RTDB secret), since ESP login flow is not practical here.
-  // Make sure this is not committed to public source.
-  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
-  Firebase.reconnectWiFi(true);
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+config.api_key = API_KEY;
+config.database_url = DATABASE_URL;
 
-  // We consider everything reachable after this as authenticated by DB secret.
-  signUpOK = true;
+auth.user.email = USER_EMAIL;
+auth.user.password = USER_PASSWORD;
+
+Firebase.begin(&config, &auth);
+Firebase.reconnectWiFi(true);
+
+configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+
+Serial.println("Signing into Firebase...");
+
+while (auth.token.uid == "") {
+  Serial.print(".");
+  delay(500);
+}
+
+Serial.println();
+Serial.println("Firebase authenticated");
+
+
+
 
 
 }
@@ -71,7 +85,7 @@ unsigned long getUnixTime() {
 void loop() {
   
 
-  if (Firebase.ready() && signUpOK){
+  if (Firebase.ready()){
 
     bool requestMoisture = false;
     bool waterPlantTrigger = false;

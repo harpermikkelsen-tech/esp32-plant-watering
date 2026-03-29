@@ -32,10 +32,10 @@ export function updateThirstMessage(thirstLevel) {
 
 export function updatePlantImage(thirstLevel) {
     const img = document.getElementById("plant-image");
-    if (thirstLevel.includes("Dying 🪦")) img.src = "dying.png";
-    else if (thirstLevel.includes("Thirsty 😢")) img.src = "thirsty.png";
-    else if (thirstLevel.includes("Happy 🌱")) img.src = "happy.png";
-    else if (thirstLevel.includes("Overwatered 😵‍💫")) img.src = "overwattered.png";
+    if (thirstLevel.includes("Dying 🪦")) img.src = "../assets/images/dying.png";
+    else if (thirstLevel.includes("Thirsty 😢")) img.src = "../assets/images/thirsty.png";
+    else if (thirstLevel.includes("Happy 🌱")) img.src = "../assets/images/happy.png";
+    else if (thirstLevel.includes("Overwatered 😵‍💫")) img.src = "../assets/images/overwattered.png";
 }
 
 export function rainAnimation(optionText) {
