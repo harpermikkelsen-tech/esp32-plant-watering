@@ -72,5 +72,7 @@ An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime 
 
 Watch the full demo on YouTube:
 
+(Note the video uses a slighly older version of the website where authentication hasn't been implemented yet, but the functionality is identical).
+
 - [Plant Watering Demo Video](https://youtu.be/cg9LvNNaJa8)
 
