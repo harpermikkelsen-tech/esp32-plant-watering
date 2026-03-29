@@ -59,7 +59,7 @@ An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime 
 
 ## Block Diagram
 
-![ESP32 Plant Watering System](assets/block_diagram.png)
+![ESP32 Plant Watering System](assets/images/block_diagram.png)
 
 ## What I learned
 
