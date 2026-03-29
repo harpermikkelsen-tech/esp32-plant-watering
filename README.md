@@ -1,4 +1,4 @@
-# Plant Watering Project
+# ESP32 Plant Watering Project
 
 An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime Database, and a browser dashboard for remote control and live sensor monitoring.
 
