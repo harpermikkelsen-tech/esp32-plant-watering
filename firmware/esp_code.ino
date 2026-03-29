@@ -48,20 +48,14 @@ void setup() {
   Serial.print("Connected with IP: ");
   Serial.println(WiFi.localIP());
 
-  config.api_key = API_KEY;
-  config.database_url = DATABASE_URL;
-
-  if (Firebase.signUp(&config, &auth, "", "")) {
-    Serial.println("signUP OK");
-    signUpOK = true;
-  } else {
-    Serial.printf("%s\n", config.signer.signupError.message.c_str());
-  }
-
-  config.token_status_callback = tokenStatusCallback;
-  Firebase.begin(&config, &auth);
+  // Using Database Secret auth (legacy RTDB secret), since ESP login flow is not practical here.
+  // Make sure this is not committed to public source.
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   Firebase.reconnectWiFi(true);
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+
+  // We consider everything reachable after this as authenticated by DB secret.
+  signUpOK = true;
 
 
 }

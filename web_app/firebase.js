@@ -1,8 +1,10 @@
 // firebase.js
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js';
 import { getDatabase, ref, set, onValue } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js';
 
 let db;
+let auth;
 
 export function initFirebase() {
     const firebaseConfig = {
@@ -16,8 +18,24 @@ export function initFirebase() {
         measurementId: "G-QRFBK44H7Q"
     };
     const app = initializeApp(firebaseConfig);
-    db = getDatabase();
+    db = getDatabase(app);
+    auth = getAuth(app);
     return db;
+}
+
+export function onAuthStateChangedListener(callback) {
+    if (!auth) throw new Error('Firebase not initialized');
+    return onAuthStateChanged(auth, callback);
+}
+
+export function loginWithEmail(email, password) {
+    if (!auth) throw new Error('Firebase not initialized');
+    return signInWithEmailAndPassword(auth, email, password);
+}
+
+export function logoutUser() {
+    if (!auth) throw new Error('Firebase not initialized');
+    return signOut(auth);
 }
 
 export function waterPlant(lengthValue) {

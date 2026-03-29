@@ -83,6 +83,14 @@ button + button {
   border-left: none;
 }
 
+#login-form button {
+  border-left: 4px solid #333;
+}
+
+#login-form button:first-child {
+  border-left: 4px solid #333;
+}
+
 /* Dropdown styling */
 .water-dropdown-container {
   position: relative;
