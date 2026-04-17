@@ -45,7 +45,7 @@ An IoT plant monitoring and irrigation system using an ESP32, Firebase Realtime 
 1. Copy `firmware/secrets.h.example` 
 2. Fill in:
    - `WIFI_SSID`, `WIFI_PASSWORD`
-   - `API_KEY` (if needed for REST/auth operations)
+   - `API_KEY` 
    - `DATABASE_URL`
    - `WIFI_SSID`, `WIFI_PASSWORD`
 3. Compile and flash `firmware/esp_code.ino` to ESP32/ESP8266.
